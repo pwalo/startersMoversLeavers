@@ -18,6 +18,13 @@ let equipmentSchema = mongoose.Schema({
     type: Boolean,
     required: true
   },
+  grade:{
+    type: String,
+  },
+  cost:{
+    type: Number,
+    required: true
+  },
   notes:{
     type: String
   },

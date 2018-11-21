@@ -32,6 +32,8 @@ router.post('/add', function(req, res){
       equipment.make = req.body.make;
       equipment.model = req.body.model;
       equipment.active = true;
+      equipment.cost = req.body.cost;
+      equipment.grade = req.body.grade;
       equipment.notes = req.body.notes;
       equipment.added = new Date();
       equipment.addedBy = 'Pwalo';
@@ -79,6 +81,8 @@ router.post('/edit/:id', function(req, res){
     equipment.type = req.body.type;
     equipment.make = req.body.make;
     equipment.model = req.body.model;
+    equipment.cost = req.body.cost;
+    equipment.grade = req.body.grade;
     equipment.active = req.body.active;
     equipment.notes = req.body.notes;
     equipment.changed = new Date();

@@ -13,6 +13,12 @@ block content
         label Model:
         input.form-control(name='model', type='text', value=equipment.model)
       #form-group
+        label Grade:
+        input.form-control(name='grade', type='text', value=equipment.grade)
+      #form-group
+        label Cost:
+        input.form-control(name='cost', type='decimal', value=equipment.cost)
+      #form-group
         label Notes:
         textarea.form-control(name='notes')=equipment.notes
       #form-group

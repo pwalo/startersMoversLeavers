@@ -24,6 +24,8 @@ db.on('error', function(err){
 // Init App
 const app = express();
 
+app.locals.moment = require('moment');
+
 // Bring in Models
 let Option = require('./models/option');
 
