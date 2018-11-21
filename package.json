@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app"
   },
-  "author": "Paul Briars",
+  "author": "Pwalo",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
