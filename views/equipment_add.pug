@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1 #{title} 
+    form(method='POST', action='/equipment/add')
+      #form-group
+        label Type:
+        input.form-control(name='type', type='text', placeholder='Car / Phone / Accessory')          
+      #form-group
+        label Make:
+        input.form-control(name='make', type='text')
+      #form-group
+        label Model:
+        input.form-control(name='model', type='text')
+      #form-group
+        label Notes:
+        textarea.form-control(name='notes')
+      #form-group
+        label Active Status:
+        input.form-control(name='active', type='checkbox' value='true')
+      br
+      input.btn.btn-primary(type='submit', value='Submit')
+      

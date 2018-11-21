@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 #{title} 
+    form(method='POST', action='/equipment/edit/'+equipment._id)
+      #form-group
+        label Type:
+        input.form-control(name='type', type='text', value=equipment.type)          
+      #form-group
+        label Make:
+        input.form-control(name='make', type='text', value=equipment.make)
+      #form-group
+        label Model:
+        input.form-control(name='model', type='text', value=equipment.model)
+      #form-group
+        label Notes:
+        textarea.form-control(name='notes')=equipment.notes
+      #form-group
+        label Active:
+        input.form-control(name='active', type='checkbox', checked=equipment.active, value='true')
+      br
+      input.btn.btn-primary(type='submit', value='Submit')

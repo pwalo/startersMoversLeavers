@@ -86,7 +86,7 @@ router.post('/edit/:id', function(req, res){
         return;
       } else {
         req.flash('success', 'Option Updated: \"'+option.name+'\"');
-        res.redirect('/edit');
+        res.redirect('/options/edit');
       }
     });
   });

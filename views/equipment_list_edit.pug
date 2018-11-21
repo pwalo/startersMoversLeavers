@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+      each equipment, i in equipments
+        li.list-group-item 
+          a(href="/equipment/edit/"+equipment._id)= equipment.type+' : '+equipment.make+' '+equipment.model
+          p Added: #{equipment.added} By: #{equipment.addedBy}
+          p Changed: #{equipment.changed} By: #{equipment.changedBy}
+          p Grade: 
+          p Cost: 
+          p=equipment.notes
+          p=equipment.active

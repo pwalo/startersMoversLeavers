@@ -90,6 +90,8 @@ app.get('/', function(req, res){
 // Route Files
 let options = require('./routes/options');
 app.use('/options', options);
+let equipment = require('./routes/equipment');
+app.use('/equipment', equipment);
 
 //Start Server
 app.listen(3000, function(){
