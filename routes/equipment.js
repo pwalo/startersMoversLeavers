@@ -102,4 +102,28 @@ router.post('/edit/:id', function(req, res){
     });
   });
 
+  // Query List Route
+router.get('/query', function(req, res){
+  Equipment.find({}, function(err, equipments){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('equipment_list_query', {
+        title:'Equipment Query',
+        equipments: equipments
+      });
+    }
+  });
+});
+
+// Query Item Route
+router.get('/query/:id', function(req, res){
+  Equipment.findById(req.params.id, function(err, equipment){
+    res.render('equipment_query', {
+      title:'Equipment Query',
+      equipment:equipment
+    });
+  });
+});
+
 module.exports = router;

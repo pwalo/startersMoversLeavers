@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+        each equipment, i in equipments
+            li.list-group-item
+                a(href="/equipment/query/"+equipment._id)
+                    | #{equipment.type} : #{equipment.make} - 
+                    | #{equipment.model}
+                p Notes:
+                p=equipment.notes
+                p Grade: #{equipment.grade}
+                p Active: #{equipment.active}
+    br
+    

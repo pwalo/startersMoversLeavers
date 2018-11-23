@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+        each company, i in companys
+            li.list-group-item
+                a(href="/company/query/"+company._id)
+                    | #{company.code} : #{company.company}
+    br
+    

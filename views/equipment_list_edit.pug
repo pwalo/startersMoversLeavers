@@ -6,10 +6,7 @@ block content
       each equipment, i in equipments
         li.list-group-item 
           a(href="/equipment/edit/"+equipment._id)= equipment.type+' : '+equipment.make+' '+equipment.model
-          p Grade: #{equipment.grade}
-          p Cost: £ #{equipment.cost}
           p Notes:
           p=equipment.notes
-          p Added: #{moment(equipment.added).format('DD/MM/YYYY')}  By: #{equipment.addedBy}
-          p Changed: #{moment(equipment.changed).format('DD/MM/YYYY')}  By: #{equipment.changedBy}
+          p Grade: #{equipment.grade}
           p Active: #{equipment.active}

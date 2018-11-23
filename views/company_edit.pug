@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 #{title} 
+    form(method='POST', action='/company/edit/'+company._id)
+      #form-group
+        label Company:
+        input.form-control(name='type', type='text', value=company.company)          
+      #form-group
+        label Code:
+        input.form-control(name='make', type='text', value=company.code)
+      br
+      input.btn.btn-primary(type='submit', value='Submit')

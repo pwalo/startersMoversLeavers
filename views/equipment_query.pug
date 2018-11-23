@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+        li.list-group-item
+            p=equipment.type+' : '+equipment.make+' '+equipment.model
+            p Grade: #{equipment.grade}
+            p Cost: £ #{equipment.cost}
+            p Notes:
+            p=equipment.notes
+            p Added: #{moment(equipment.added).format('DD/MM/YYYY')}  By: #{equipment.addedBy}
+            p Changed: #{moment(equipment.changed).format('DD/MM/YYYY')}  By: #{equipment.changedBy}
+            p Active: #{equipment.active}
+    br

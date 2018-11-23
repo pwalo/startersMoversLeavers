@@ -83,7 +83,7 @@ app.get('/', function(req, res){
         console.log(err);
       } else {
         res.render('index', {
-          title:'Welcome to The KMUK Empoyee CRUD App for IT systems',
+          title:'Welcome to The Company Employee CRUD App for IT systems and Equipment',
           options: options
         });
       }
@@ -99,6 +99,8 @@ let users = require('./routes/users');
 app.use('/users', users);
 let userRoles = require('./routes/userRoles');
 app.use('/userRoles', userRoles);
+let company = require('./routes/company');
+app.use('/company', company);
 
 //Start Server
 app.listen(3000, function(){
