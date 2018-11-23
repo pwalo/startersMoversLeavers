@@ -39,7 +39,7 @@ router.post('/add', function(req, res){
           return;
         } else {
           req.flash('success', 'User Role Created: \"'+userRole.role+'\"');
-          res.redirect('/userRole/edit');
+          res.redirect('/userRoles/edit');
         }
       });
     }
@@ -84,8 +84,8 @@ router.post('/edit/:id', function(req, res){
         console.log(err);
         return;
       } else {
-        req.flash('success', 'User Role Updated: \"'+userRole.email+'\"');
-        res.redirect('/user_roles/edit');
+        req.flash('success', 'User Role Updated: \"'+userRole.role+'\"');
+        res.redirect('/userRoles/edit');
       }
     });
   });

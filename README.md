@@ -12,5 +12,3 @@ My priorities in this repo are:
 1 Personal Education - I must be learning 
 2 Enjoyment and satisfaction - I want to have fun
 3 Create something that can actually be used and enhanced
-
-

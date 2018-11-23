@@ -2,3 +2,8 @@ extends layout
 
 block content
     h1 #{title}
+    ul.list-group
+      each user, i in users
+        li.list-group-item 
+          a(href="/users/edit/"+user._id)= user.email
+          p=user.firstName + ' ' + user.lastName
