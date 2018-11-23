@@ -78,6 +78,17 @@ router.get('/edit/:id', function(req, res){
     Equipment.findById(req.params.id, function(err, equipment){
       res.render('equipment_edit', {
         title:'Update Equipment',
+        eqTypes:[
+          {
+            'type':''
+          },
+          {
+            'type':'Phone'
+          },
+          { 
+            'type':'Car'
+          }
+        ],
         equipment:equipment
       });
     });

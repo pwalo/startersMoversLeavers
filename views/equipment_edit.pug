@@ -5,7 +5,10 @@ block content
     form(method='POST', action='/equipment/edit/'+equipment._id)
       #form-group
         label Type:
-        input.form-control(name='type', type='text', value=equipment.type)          
+        select.form-control(name='type', value=equipment.type)
+          option.form-control(name='type', value=equipment.type, selected) #{equipment.type}
+          each eqType, i in eqTypes
+            option.form-control(name='type', value=equipment.type) #{eqType.type}          
       #form-group
         label Make:
         input.form-control(name='make', type='text', value=equipment.make)
