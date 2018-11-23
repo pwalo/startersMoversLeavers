@@ -24,12 +24,13 @@ db.on('error', function(err){
 // Init App
 const app = express();
 
+// Allow use of date only from timestamp in views
 app.locals.moment = require('moment');
 
 // Bring in Models
 let Option = require('./models/option');
 
-// Load View Engine
+// Load Pug View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -82,7 +83,7 @@ app.get('/', function(req, res){
         console.log(err);
       } else {
         res.render('index', {
-          title:'Start',
+          title:'Welcome to The KMUK Empoyee CRUD App for IT systems',
           options: options
         });
       }
@@ -96,6 +97,8 @@ let equipment = require('./routes/equipment');
 app.use('/equipment', equipment);
 let users = require('./routes/users');
 app.use('/users', users);
+let userRoles = require('./routes/userRoles');
+app.use('/userRoles', userRoles);
 
 //Start Server
 app.listen(3000, function(){
