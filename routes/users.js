@@ -58,7 +58,7 @@ router.get('/edit/:id', function(req, res){
 
 // Home Route
 router.get('/edit', function(req, res){
-    Users.find({}, function(err, users){
+    User.find({}, function(err, users){
       if(err){
         console.log(err);
       } else {
