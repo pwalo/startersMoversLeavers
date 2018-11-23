@@ -5,7 +5,9 @@ block content
     form(method='POST', action='/equipment/add')
       #form-group
         label Type:
-        input.form-control(name='type', type='text', placeholder='Car / Phone / Accessory')          
+        select.form-control(name='type')
+          each eqType, i in eqTypes
+            option.form-control(name='type', value=eqType.type) #{eqType.type}
       #form-group
         label Make:
         input.form-control(name='make', type='text')
@@ -26,4 +28,3 @@ block content
         input.form-control(name='active', type='checkbox' value='true')
       br
       input.btn.btn-primary(type='submit', value='Submit')
-      

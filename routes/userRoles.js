@@ -21,7 +21,7 @@ router.post('/add', function(req, res){
     let errors = req.validationErrors();
   
     if(errors){
-      res.render('usersRole_add', {
+      res.render('userRole_add', {
         title:'Error on New User Role Form',
         errors:errors
         
@@ -30,7 +30,7 @@ router.post('/add', function(req, res){
       let userRole = new UserRole();
       userRole.role = req.body.role;
       userRole.description = req.body.description;
-      userRole.company = req.body.email;
+      userRole.company = req.body.company;
       console.log('POST: New User Role Created.  Name: '+userRole.role+' @ '+userRole.company);
   
       userRole.save(function(err){
@@ -48,7 +48,7 @@ router.post('/add', function(req, res){
   // Add Route - Load Edit Individual Option Form
 router.get('/edit/:id', function(req, res){
     UserRole.findById(req.params.id, function(err, userRole){
-      res.render('user_roles_edit', {
+      res.render('userRoles_edit', {
         title:'Update User Role',
         userRole:userRole
       });
@@ -71,7 +71,7 @@ router.get('/edit', function(req, res){
 
   // Add Route - Update Submit POST
 router.post('/edit/:id', function(req, res){
-    let user = {};
+    let userRole = {};
     userRole.role = req.body.role;
     userRole.description = req.body.description;
     userRole.company = req.body.company;

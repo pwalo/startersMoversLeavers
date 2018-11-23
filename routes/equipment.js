@@ -7,7 +7,18 @@ let Equipment = require('../models/equipment');
 // Add Route - Add Equipment
 router.get('/add', function(req, res){
   res.render('equipment_add', {
-    title:'Create New Equipment'
+    title:'Create New Equipment',
+    eqTypes:[
+      {
+        'type':''
+      },
+      {
+        'type':'Phone'
+      },
+      { 
+        'type':'Car'
+      }
+    ]
   });
 });
 
@@ -23,6 +34,17 @@ router.post('/add', function(req, res){
     if(errors){
       res.render('equipment_add', {
         title:'Create New Equipment',
+        eqTypes:[
+          {
+            'type':''
+          },
+          {
+            'type':'Phone'
+          },
+          { 
+            'type':'Car'
+          }
+        ],
         errors:errors
         
       }); 

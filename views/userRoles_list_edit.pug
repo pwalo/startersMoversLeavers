@@ -2,3 +2,9 @@ extends layout
 
 block content
     h1 #{title}
+    ul.list-group
+      each userRole, i in userRoles
+        li.list-group-item 
+          a(href="/userRoles/edit/"+userRole._id)= userRole.role+' @ '+userRole.company
+          p=userRole.description
+          
