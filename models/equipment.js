@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 
 // Equipment Schema
 let equipmentSchema = mongoose.Schema({
-  type:{
+  type:{ //lookup only
     type: String,
     required: true
   },

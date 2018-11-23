@@ -10,7 +10,7 @@ let userRoleSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  company:{
+  company:{ // lookup only
     type: String,
     required: true
   },
