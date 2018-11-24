@@ -23,13 +23,21 @@ create employee additonal data
         grade
         salary
     employment
-        role
+        job-role
         job-title
         start-date
         hours
         breaks
         manager
             
+
+create employee roles
+    systems
+        system roles
+    applications
+    cloud services
+    special roles
+
 
 create allocation tables
     employee > roles
