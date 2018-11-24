@@ -1,0 +1,36 @@
+update user roles
+    company to be look up of companies
+
+create equipment 'types'
+    model
+    route
+    views
+    add route to main app.js
+    update equipment routes to use db types
+
+create employee
+    model
+    route
+    views
+    add route to main app.js
+
+create employee additonal data
+    contacts
+        address
+        emergency contact
+    pay
+        bank
+        grade
+        salary
+    employment
+        role
+        job-title
+        start-date
+        hours
+        breaks
+        manager
+            
+
+create allocation tables
+    employee > roles
+    employee > equipment
