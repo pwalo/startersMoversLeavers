@@ -1,6 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+eqTypes=[
+  {'type':'' },
+  {'type':'Phone'},
+  {'type':'Laptop'},
+  {'type':'Tablet'},
+  {'type':'Accessory'},
+  {'type':'Clothing'},
+  {'type':'Car'},
+  {'type':'Specialist'}
+];
+
 // Bring in Equipment Model
 let Equipment = require('../models/equipment');
 
@@ -8,17 +19,7 @@ let Equipment = require('../models/equipment');
 router.get('/add', function(req, res){
   res.render('equipment_add', {
     title:'Create New Equipment',
-    eqTypes:[
-      {
-        'type':''
-      },
-      {
-        'type':'Phone'
-      },
-      { 
-        'type':'Car'
-      }
-    ]
+    eqTypes:eqTypes
   });
 });
 
@@ -34,17 +35,7 @@ router.post('/add', function(req, res){
     if(errors){
       res.render('equipment_add', {
         title:'Create New Equipment',
-        eqTypes:[
-          {
-            'type':''
-          },
-          {
-            'type':'Phone'
-          },
-          { 
-            'type':'Car'
-          }
-        ],
+        eqTypes:eqTypes,
         errors:errors
         
       }); 
@@ -78,17 +69,7 @@ router.get('/edit/:id', function(req, res){
     Equipment.findById(req.params.id, function(err, equipment){
       res.render('equipment_edit', {
         title:'Update Equipment',
-        eqTypes:[
-          {
-            'type':''
-          },
-          {
-            'type':'Phone'
-          },
-          { 
-            'type':'Car'
-          }
-        ],
+        eqTypes:eqTypes,
         equipment:equipment
       });
     });

@@ -6,7 +6,7 @@ create equipment 'types'
     route
     views
     add route to main app.js
-    update equipment routes to use db types
+    update equipment.js route to use db types
 
 create employee
     model
@@ -29,7 +29,7 @@ create employee additonal data
         hours
         breaks
         manager
-            
+
 
 create employee roles
     systems
@@ -40,5 +40,16 @@ create employee roles
 
 
 create allocation tables
+    user > companies
+    user > sites
+    user > roles
+    employee > companies
+    employee > sites
     employee > roles
     employee > equipment
+    
+
+handle subject access requests
+    find info
+    flag info for deletion when reasonable
+    delete data flagged for deletion on deletion date
