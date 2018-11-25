@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
-// User Schema
-let userSchema = mongoose.Schema({
+// Employee Schema
+let employeeSchema = mongoose.Schema({
   firstName:{
     type: String,
     required: true
@@ -10,10 +10,10 @@ let userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  email:{
-    type: String,
+  employeeNR:{
+    type: Number,
     required: true
   }
 });
 
-let User = module.exports = mongoose.model('User', userSchema);
+let Employee = module.exports = mongoose.model('Employee', employeeSchema);

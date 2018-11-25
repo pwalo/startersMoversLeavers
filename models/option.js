@@ -13,7 +13,7 @@ let optionSchema = mongoose.Schema({
   url:{
     type: String,
     required: true
-  },
+  }
 });
 
 let Option = module.exports = mongoose.model('Option', optionSchema);

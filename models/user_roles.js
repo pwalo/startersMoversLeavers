@@ -13,7 +13,7 @@ let userRoleSchema = mongoose.Schema({
   company:{ // lookup only
     type: String,
     required: true
-  },
+  }
 });
 
 let UserRole = module.exports = mongoose.model('UserRole', userRoleSchema);
