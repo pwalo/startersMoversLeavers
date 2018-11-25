@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul.list-group
+      each employeeRole, i in employeeRoles
+        li.list-group-item 
+          a(href="/employeeRoles/edit/"+employeeRole._id)= employeeRole.role+' @ '+employeeRole.company
+          p=employeeRole.description
+          

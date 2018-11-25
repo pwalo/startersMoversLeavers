@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{title} 
+    form(method='POST', action='/employees/edit/'+employee._id)
+      #form-group
+        label Employee Number:
+        input.form-control(name='employeeNR', type='number', value=employee.employeeNR)          
+      #form-group
+        label First Name:
+        input.form-control(name='firstName', type='text', value=employee.firstName)
+      #form-group
+        label Last Name:
+        input.form-control(name='lastName', type='text', value=employee.lastName)
+      br
+      input.btn.btn-primary(type='submit', value='Submit')

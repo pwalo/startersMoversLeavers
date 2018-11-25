@@ -83,7 +83,7 @@ app.get('/', function(req, res){
         console.log(err);
       } else {
         res.render('index', {
-          title:'Welcome to The Company Employee CRUD App for IT systems and Equipment',
+          title:'CRUD App for IT systems and Equipment',
           options: options
         });
       }
@@ -101,6 +101,10 @@ let userRoles = require('./routes/userRoles');
 app.use('/userRoles', userRoles);
 let company = require('./routes/company');
 app.use('/company', company);
+let employee = require('./routes/employee');
+app.use('/employees', employee);
+let employeeRoles = require('./routes/employeeRoles');
+app.use('/employeeRoles', employeeRoles);
 
 //Start Server
 app.listen(3000, function(){
