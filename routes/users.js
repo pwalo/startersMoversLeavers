@@ -173,7 +173,14 @@ router.post('/login', function(req, res, next){
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
-  console.log('CHECK 1');
+  console.log('Logged In');
+});
+
+// logout
+router.get('/logout', function(req, res){
+  req.logout();
+  req.flash('success', 'You are logged out');
+  res.redirect('/users/login');
 });
 
 
