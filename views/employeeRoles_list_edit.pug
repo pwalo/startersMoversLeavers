@@ -1,10 +1,14 @@
 extends layout
 
 block content
-    h1 #{title}
-    ul.list-group
-      each employeeRole, i in employeeRoles
-        li.list-group-item 
-          a(href="/employeeRoles/edit/"+employeeRole._id)= employeeRole.role+' @ '+employeeRole.company
-          p=employeeRole.description
+    if user
+      h1 #{title}
+      ul.list-group
+        each employeeRole, i in employeeRoles
+          li.list-group-item 
+            a(href="/employeeRoles/edit/"+employeeRole._id)= employeeRole.role+' @ '+employeeRole.company
+            p=employeeRole.description
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user
           

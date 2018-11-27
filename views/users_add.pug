@@ -1,17 +1,21 @@
 extends layout
 
 block content
-    h1 #{title} 
-    form(method='POST', action='/users/add')
-      #form-group
-        label First Name:
-        input.form-control(name='firstName', type='text')          
-      #form-group
-        label Last Name:
-        input.form-control(name='lastName', type='text')
-      #form-group
-        label Email:
-        input.form-control(name='email', type='email')
-      br
-      input.btn.btn-primary(type='submit', value='Submit')
+    if user
+      h1 #{title} 
+      form(method='POST', action='/users/add')
+        #form-group
+          label First Name:
+          input.form-control(name='firstName', type='text')          
+        #form-group
+          label Last Name:
+          input.form-control(name='lastName', type='text')
+        #form-group
+          label Email:
+          input.form-control(name='email', type='email')
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user
       

@@ -1,17 +1,21 @@
 extends layout
 
 block content
-    h1 #{title}
-    h4 Users
-    ul.list-group
-      each user, i in users
-        li.list-group-item 
-          a(href="/users/edit/"+user._id)= user.email
-          p=user.firstName + ' ' + user.lastName
-    br
-    h4 Roles
-    ul.list-group
-      each userRole, i in userRoles
-        li.list-group-item 
-          a(href="/userRoles/edit/"+userRole._id)= userRole.role
-          p=userRole.company + ' ' + userRole.description
+    if user
+      h1 #{title}
+      h4 Users
+      ul.list-group
+        each user, i in users
+          li.list-group-item 
+            a(href="/users/edit/"+user._id)= user.email
+            p=user.firstName + ' ' + user.lastName
+      br
+      h4 Roles
+      ul.list-group
+        each userRole, i in userRoles
+          li.list-group-item 
+            a(href="/userRoles/edit/"+userRole._id)= userRole.role
+            p=userRole.company + ' ' + userRole.description
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user

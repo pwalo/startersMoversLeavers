@@ -4,9 +4,14 @@ block content
     h2 #{title}
     h3 Create-Read-Update-Delete
     h3 Employees, equipment, roles etc...
-    ul.list-group
-      each option, i in options
-        li.list-group-item 
-          a(href="/"+option.url)= option.name
-          p=option.description
+    if user
+      ul.list-group
+        each option, i in options
+          li.list-group-item 
+            a(href="/"+option.url)= option.name
+            p=option.description
+    else
+      h3 Only For Authorised Users
+      p Contact RIT if you need access to this resource
+
           

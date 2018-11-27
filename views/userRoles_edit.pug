@@ -1,17 +1,21 @@
 extends layout
 
 block content
-    h1 #{title} 
-    form(method='POST', action='/userRoles/edit/'+userRole._id)
-      #form-group
-        label Role:
-        input.form-control(name='role', type='text', value=userRole.role)          
-      #form-group
-        label Company:
-        input.form-control(name='company', type='text', value=userRole.company)
-      #form-group
-        label Description:
-        textarea.form-control(name='description')=userRole.description
-      br
-      input.btn.btn-primary(type='submit', value='Submit')
+    if user
+      h1 #{title} 
+      form(method='POST', action='/userRoles/edit/'+userRole._id)
+        #form-group
+          label Role:
+          input.form-control(name='role', type='text', value=userRole.role)          
+        #form-group
+          label Company:
+          input.form-control(name='company', type='text', value=userRole.company)
+        #form-group
+          label Description:
+          textarea.form-control(name='description')=userRole.description
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user
       

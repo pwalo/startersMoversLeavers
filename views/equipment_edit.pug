@@ -1,32 +1,36 @@
 extends layout
 
 block content
-    h1 #{title} 
-    form(method='POST', action='/equipment/edit/'+equipment._id)
-      #form-group
-        label Type:
-        select.form-control(name='type', value=equipment.type)
-          option.form-control(name='type', value=equipment.type, selected) #{equipment.type}
-          each eqType, i in eqTypes
-            option.form-control(name='type', value=equipment.type) #{eqType.type}          
-      #form-group
-        label Make:
-        input.form-control(name='make', type='text', value=equipment.make)
-      #form-group
-        label Model:
-        input.form-control(name='model', type='text', value=equipment.model)
-      #form-group
-        label Grade:
-        input.form-control(name='grade', type='text', value=equipment.grade)
-      #form-group
-        label Cost:
-        input.form-control(name='cost', type='decimal', value=equipment.cost)
-      #form-group
-        label Notes:
-        textarea.form-control(name='notes')=equipment.notes
-      #form-group
-        label Active:
-        input.form-control(name='active', type='checkbox', checked=equipment.active, value='true')
-      br
-      input.btn.btn-primary(type='submit', value='Submit')
+    if user
+      h1 #{title} 
+      form(method='POST', action='/equipment/edit/'+equipment._id)
+        #form-group
+          label Type:
+          select.form-control(name='type', value=equipment.type)
+            option.form-control(name='type', value=equipment.type, selected) #{equipment.type}
+            each eqType, i in eqTypes
+              option.form-control(name='type', value=equipment.type) #{eqType.type}          
+        #form-group
+          label Make:
+          input.form-control(name='make', type='text', value=equipment.make)
+        #form-group
+          label Model:
+          input.form-control(name='model', type='text', value=equipment.model)
+        #form-group
+          label Grade:
+          input.form-control(name='grade', type='text', value=equipment.grade)
+        #form-group
+          label Cost:
+          input.form-control(name='cost', type='decimal', value=equipment.cost)
+        #form-group
+          label Notes:
+          textarea.form-control(name='notes')=equipment.notes
+        #form-group
+          label Active:
+          input.form-control(name='active', type='checkbox', checked=equipment.active, value='true')
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user
       

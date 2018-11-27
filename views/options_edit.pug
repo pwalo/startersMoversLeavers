@@ -1,17 +1,21 @@
 extends layout
 
 block content
-    h1 #{title} 
-    form(method='POST', action='/options/edit/'+option._id)
-      #form-group
-        label Name:
-        input.form-control(name='name', type='text', value=option.name)          
-      #form-group
-        label URL:
-        input.form-control(name='url', type='text', value=option.url)
-      #form-group
-        label Description:
-        textarea.form-control(name='description')=option.description
-      br
-      input.btn.btn-primary(type='submit', value='Submit')
+    if user
+      h1 #{title} 
+      form(method='POST', action='/options/edit/'+option._id)
+        #form-group
+          label Name:
+          input.form-control(name='name', type='text', value=option.name)          
+        #form-group
+          label URL:
+          input.form-control(name='url', type='text', value=option.url)
+        #form-group
+          label Description:
+          textarea.form-control(name='description')=option.description
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user
       
