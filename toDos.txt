@@ -8,11 +8,6 @@ create equipment 'types'
     add route to main app.js
     update equipment.js route to use db types
 
-create employee
-    model
-    route
-    views
-    add route to main app.js
 
 create employee additonal data
     contacts
@@ -47,7 +42,7 @@ create allocation tables
     employee > sites
     employee > roles
     employee > equipment
-    
+
 
 handle subject access requests
     find info

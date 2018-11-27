@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const config = require('./config/database');
 const expressValidator = require('express-validator');
 const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
 
 
 mongoose.connect(config.database, { useNewUrlParser: true });
@@ -52,6 +54,11 @@ app.use(session({
   }));
 
 // Express Messages Middleware
+//app.configure(function() {
+//  app.use(express.cookieParser('keyboard cat'));
+//  app.use(express.session({ cookie: { maxAge: 60000 }}));
+//  app.use(flash());
+//});
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
@@ -76,6 +83,11 @@ app.use(expressValidator({
     }
   }));
 
+// Passport Config
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Home Route
 app.get('/', function(req, res){
     Option.find({}, function(err, options){
@@ -92,18 +104,18 @@ app.get('/', function(req, res){
 
 // Route Files
 let options = require('./routes/options');
-app.use('/options', options);
 let equipment = require('./routes/equipment');
-app.use('/equipment', equipment);
 let users = require('./routes/users');
-app.use('/users', users);
 let userRoles = require('./routes/userRoles');
-app.use('/userRoles', userRoles);
 let company = require('./routes/company');
-app.use('/company', company);
 let employee = require('./routes/employee');
-app.use('/employees', employee);
 let employeeRoles = require('./routes/employeeRoles');
+app.use('/options', options);
+app.use('/equipment', equipment);
+app.use('/users', users);
+app.use('/userRoles', userRoles);
+app.use('/company', company);
+app.use('/employees', employee);
 app.use('/employeeRoles', employeeRoles);
 
 //Start Server
