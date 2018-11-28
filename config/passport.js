@@ -10,7 +10,7 @@ module.exports = function(passport){
         User.findOne(query, function(err, user){
             if(err) throw err; 
             if(!user){
-                return done(null, false, {message: 'Incorrect user or Password', type: 'danger'});
+                return done(null, false, {message: 'Incorrect user or Password'});
                 
             }
             // Match Password
@@ -19,7 +19,7 @@ module.exports = function(passport){
                 if(isMatch){
                     return done(null, user); 
                 } else {
-                    return done(null, false, {message: 'Incorrect user or Password', type: 'danger'}); 
+                    return done(null, false, {message: 'Incorrect user or Password'}); 
                 } 
             }); 
         });
