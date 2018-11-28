@@ -7,7 +7,7 @@ const config = require('./config/database');
 const expressValidator = require('express-validator');
 const session = require('express-session');
 const passport = require('passport');
-const flash = require('connect-flash');
+// const flash = require('connect-flash');
 
 
 mongoose.connect(config.database, { useNewUrlParser: true });
