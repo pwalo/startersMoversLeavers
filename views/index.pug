@@ -2,8 +2,6 @@ extends layout
 
 block content
     h2 #{title}
-    h3 Create-Read-Update-Delete
-    h3 Employees, equipment, roles etc...
     if user
       ul.list-group
         each option, i in options
@@ -12,6 +10,8 @@ block content
             p=option.description
     else
       h3 Only For Authorised Users
-      p Contact RIT if you need access to this resource
+      p Contact RIT or HR if you need access to this resource
+      p uk.rit@kloeckner.com 
+      p hradmin@kloeckner.com
 
           

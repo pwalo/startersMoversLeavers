@@ -1,22 +1,27 @@
 extends layout
 
 block content
-    h1 #{title} 
-    form(method='POST', action='/users/register')
-      #form-group
-        label First Name:
-        input.form-control(name='firstName', type='text')          
-      #form-group
-        label Last Name:
-        input.form-control(name='lastName', type='text')
-      #form-group
-        label Email:
-        input.form-control(name='email', type='email')
-      #form-group
-        label Password:
-        input.form-control(name='password', type='password')
-      #form-group
-        label Confirm Password:
-        input.form-control(name='password2', type='password')
-      br
-      input.btn.btn-primary(type='submit', value='Submit')
+    if user
+      h1 #{title} 
+      form(method='POST', action='/users/register')
+        #form-group
+          label First Name:
+          input.form-control(name='firstName', type='text')          
+        #form-group
+          label Last Name:
+          input.form-control(name='lastName', type='text')
+        #form-group
+          label Email:
+          input.form-control(name='email', type='email')
+        #form-group
+          label Password:
+          input.form-control(name='password', type='password')
+        #form-group
+          label Confirm Password:
+          input.form-control(name='password2', type='password')
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h2 Authorised Users Only
+      p Contact RIT if you need access
+      

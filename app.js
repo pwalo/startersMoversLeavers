@@ -100,7 +100,7 @@ app.get('/', function(req, res){
         console.log(err);
       } else {
         res.render('index', {
-          title:'CRUD App for IT systems and Equipment',
+          title:'Employee Credential and Equipment Manager',
           options: options
         });
       }
@@ -115,6 +115,7 @@ let userRoles = require('./routes/userRoles');
 let company = require('./routes/company');
 let employee = require('./routes/employee');
 let employeeRoles = require('./routes/employeeRoles');
+let site = require('./routes/site');
 app.use('/options', options);
 app.use('/equipment', equipment);
 app.use('/users', users);
@@ -122,6 +123,7 @@ app.use('/userRoles', userRoles);
 app.use('/company', company);
 app.use('/employees', employee);
 app.use('/employeeRoles', employeeRoles);
+app.use('/site', site);
 
 //Start Server
 app.listen(3000, function(){

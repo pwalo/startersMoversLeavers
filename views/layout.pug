@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title User CRUD App
+    title Create Read Update Delete User Information
     link(rel='stylesheet' 
       href='/bower_components/bootstrap/dist/css/bootstrap.css'
     )
@@ -23,43 +23,56 @@ html
             a.nav-link(href='/')
               | Home 
               span.sr-only (current)
-          li.nav-item.dropdown
-            a#dropdown01.nav-link.dropdown-toggle(href='/add', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Create
-            .dropdown-menu(aria-labelledby='dropdownCreate')
-                a.dropdown-item(href='/options/add') Options
-                a.dropdown-item(href='/equipment/add') Equipment
-                a.dropdown-item(href='/users/add') Users
-          li.nav-item.dropdown
-            a#dropdown01.nav-link.dropdown-toggle(href='/query', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Read
-            .dropdown-menu(aria-labelledby='dropdownRead')
-                a.dropdown-item(href='/options/query') Options
-                a.dropdown-item(href='/equipment/query') Equipment
-                a.dropdown-item(href='/users/query') Users
-          li.nav-item.dropdown
-            a#dropdown01.nav-link.dropdown-toggle(href='/edit', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Update
-            .dropdown-menu(aria-labelledby='dropdownUpdate')
-                a.dropdown-item(href='/options/edit') Options
-                a.dropdown-item(href='/equipment/edit') Equipment
-                a.dropdown-item(href='/users/edit') Users
-          li.nav-item.dropdown
-            a#dropdown01.nav-link.dropdown-toggle(href='/delete', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Delete
-            .dropdown-menu(aria-labelledby='dropdownDelete')
-                a.dropdown-item(href='/options/delete') Options
-                a.dropdown-item(href='/equipment/delete') Equipment
-                a.dropdown-item(href='/users/delete') Users
+          if user
+            li.nav-item.dropdown
+              a#dropdown01.nav-link.dropdown-toggle(href='/add', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Create
+              .dropdown-menu(aria-labelledby='dropdownCreate')
+                  a.dropdown-item(href='/options/add') Options
+                  a.dropdown-item(href='/equipment/add') Equipment
+                  a.dropdown-item(href='/users/add') Users
+                  a.dropdown-item(href='/userRoles/add') User Roles
+                  a.dropdown-item(href='/employees/add') Employees
+                  a.dropdown-item(href='/employeeRoles/add') Employee Roles
+                  a.dropdown-item(href='company/add') Company
+                  a.dropdown-item(href='/site/add') Site
+            li.nav-item.dropdown
+              a#dropdown01.nav-link.dropdown-toggle(href='/edit', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Update
+              .dropdown-menu(aria-labelledby='dropdownUpdate')
+                  a.dropdown-item(href='/options/edit') Options
+                  a.dropdown-item(href='/equipment/edit') Equipment
+                  a.dropdown-item(href='/users/edit') Users
+                  a.dropdown-item(href='/userRoles/edit') User Roles
+                  a.dropdown-item(href='/employees/edit') Employees
+                  a.dropdown-item(href='/employeeRoles/edit') Employee Roles
+                  a.dropdown-item(href='company/edit') Company
+                  a.dropdown-item(href='/site/edit') Site
+            if superAdmin
+              li.nav-item.dropdown
+                a#dropdown01.nav-link.dropdown-toggle(href='/delete', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Delete
+                .dropdown-menu(aria-labelledby='dropdownDelete')
+                    a.dropdown-item(href='/options/delete') Options
+                    a.dropdown-item(href='/equipment/delete') Equipment
+                    a.dropdown-item(href='/users/delete') Users
+                    a.dropdown-item(href='/userRoles/delete') User Roles
+                    a.dropdown-item(href='/employees/delete') Employees
+                    a.dropdown-item(href='/employeeRoles/delete') Employee Roles
+                    a.dropdown-item(href='company/delete') Company
+                    a.dropdown-item(href='/site/delete') Site                  
         ul.nav.navbar-nav.navbar-right 
           if user
             li.nav-item 
               a.nav-link(href='/users/logout') 
                 | Logout
           else
-            li.nav-item
-              a.nav-link(href='/users/register') 
-                | Register
+            if user
+              li.nav-item
+                a.nav-link(href='/users/register') 
+                  | Register
             li.nav-item
               a.nav-link(href='/users/login') 
                 | Login
     .container
+      div(class='container')
       != messages('message', locals)
       if errors
         each error, i in errors
@@ -71,6 +84,7 @@ html
         p Developed and maintained by Pwalo @ <a href='http://heyscloud.co.uk'>
           | Heyscloud</a>, info@heyscloud.co.uk
         p Copyright  &copy; 2018 Pwalo Briars
+        p Open source nodeJS project. Find it @ github.com, search for pwalo
     script(src='/bower_components/jquery/dist/jquery.js') 
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/js/main.js')    

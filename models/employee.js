@@ -12,6 +12,7 @@ let employeeSchema = mongoose.Schema({
   },
   employeeNR:{
     type: Number,
+    unique: true
   }
 });
 

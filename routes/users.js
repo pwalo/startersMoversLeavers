@@ -6,6 +6,8 @@ const passport = require('passport');
 // Bring in User Model
 let User = require('../models/user');
 let UserRole = require('../models/user_roles');
+let Company = require('../models/company');
+let Site = require('../models/site');
 
 // Add Route - Add User
 router.get('/add', function(req, res){
@@ -184,23 +186,42 @@ router.get('/logout', function(req, res){
 });
 
 
-// User Assigned Roles
+// Users and Roles List
 router.get('/roles', function(req, res){
   User.find({}, function(err, users){
-    UserRole.find({}, function(err2, userRoles){
-      if(err){
-        console.log(err);
-        if(err2){
-          console.log(err2);
+    UserRole.find({}, function(err, userRoles){
+      Site.find({}, function(err, sites){
+        if(err){
+          console.log(err);
+        } else {
+          res.render('users_and_roles_list_edit', {
+            title:'Just a pointless list used during development phase',
+            users: users,
+            userRoles: userRoles,
+            sites: sites
+          });
         }
+      });
+    });      
+  });
+});
 
-      } else {
-        res.render('users_and_roles_list_edit', {
-          title:'Update Users',
-          users: users,
-          userRoles: userRoles
-        });
-      }
+// Assign Roles to Users Form
+router.get('/roles/assignment', function(req, res){
+  User.find({}, function(err, users){
+    UserRole.find({}, function(err2, userRoles){
+      Company.find({}, function(err2, companys){    
+        if(err){
+          console.log(err);
+        } else {
+          res.render('user_role_assignment', {
+            title:'Update Users',
+            users: users,
+            userRoles: userRoles,
+            companys: companys
+          });
+        }
+      });
     });
   });
 });

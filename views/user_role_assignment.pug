@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    if user
+      h1 #{title} 
+      form(method='POST', action='/user_role_assignment/add')
+        #form-group
+          label User:
+          select.form-control(name='user')
+            each user, i in users
+              option.form-control(name='user', value=user._id) #{user.firstName} 
+                | + ' ' + #{user.LastName}
+        #form-group
+          label Role:
+          select.form-control(name='userRole')
+            each userRole, i in userRoles
+              option.form-control(name='userRole', value=userRole._id) #{userRole.role}
+        #form-group
+          label Company:
+          select.form-control(name='company')
+            each company, i in companys
+              option.form-control(name='company', value=company._id) #{company.role}
+        #form-group
+          label Site:
+          select.form-control(name='site')
+            each site, i in sites
+              option.form-control(name='site', value=site._id) #{site.role}
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user

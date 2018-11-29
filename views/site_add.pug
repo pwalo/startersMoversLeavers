@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    if user
+      h1 #{title} 
+      form(method='POST', action='/site/add')
+        #form-group
+          label Site:
+          input.form-control(name='site', type='text')          
+        #form-group
+          label Code:
+          input.form-control(name='code', type='number')
+        #form-group
+          label Company:
+          select.form-control(name='company')
+            each company, i in companys
+              option.form-control(name='company', value=company._id) #{company.company}
+        br
+        input.btn.btn-primary(type='submit', value='Submit')
+    else
+      h3 Administrators Only
+      p Contact RIT if you need to add a system user
+      

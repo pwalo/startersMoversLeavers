@@ -43,15 +43,6 @@ router.post('/add', function(req, res){
     }
   });
 
-  // Add Route - Load Edit Individual Equipment Form
-router.get('/edit/:id', function(req, res){
-    Company.findById(req.params.id, function(err, company){
-      res.render('company_edit', {
-        title:'Update Company',
-        company:company
-      });
-    });
-  });
 
 // Home Route
 router.get('/edit', function(req, res){
@@ -64,6 +55,16 @@ router.get('/edit', function(req, res){
           companys: companys
         });
       }
+    });
+  });
+
+  // Add Route - Load Edit Individual Equipment Form
+  router.get('/edit/:id', function(req, res){
+    Company.findById(req.params.id, function(err, company){
+      res.render('company_edit', {
+        title:'Update Company',
+        company:company
+      });
     });
   });
 

@@ -4,11 +4,13 @@ let mongoose = require('mongoose');
 let companySchema = mongoose.Schema({
   company:{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   code:{
     type: Number,
-    required: true
+    required: true,
+    unique: true
   }
 });
 

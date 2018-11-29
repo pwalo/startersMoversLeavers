@@ -15,10 +15,11 @@ let userSchema = mongoose.Schema({
     required: true
   },
   password:{
-    type: String,
+    type: String
   },
   username:{
     type: String,
+    unique: true
   }
 });
 
