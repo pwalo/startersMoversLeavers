@@ -20,6 +20,9 @@ let userSchema = mongoose.Schema({
   username:{
     type: String,
     unique: true
+  },
+  forcePwdChange:{
+    type: Boolean,
   }
 });
 

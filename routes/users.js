@@ -9,14 +9,14 @@ let UserRole = require('../models/user_roles');
 let Company = require('../models/company');
 let Site = require('../models/site');
 
-// Add Route - Add User
+// GET Manually Add New User (Form)
 router.get('/add', function(req, res){
   res.render('users_add', {
     title:'Create New App User'
   });
 });
 
-// Add Route - Submit POST
+// POST Manually add New User (Form Submission)
 router.post('/add', function(req, res){
     req.checkBody('firstName', 'First name is required').notEmpty();
     req.checkBody('lastName', 'Last name is required').notEmpty();
@@ -51,7 +51,7 @@ router.post('/add', function(req, res){
   }
 });
 
-// Add Route - Load Edit Individual Option Form
+// GET Edit Individual User Form
 router.get('/edit/:id', function(req, res){
   User.findById(req.params.id, function(err, user){
     res.render('users_edit', {
@@ -61,7 +61,7 @@ router.get('/edit/:id', function(req, res){
   });
 });
 
-// User List Route
+// GET List of Users
 router.get('/edit', function(req, res){
     User.find({}, function(err, users){
       if(err){
@@ -75,12 +75,13 @@ router.get('/edit', function(req, res){
     });
   });
 
-// Add Route - Update Submit POST
+// POST edit user (form submission)
 router.post('/edit/:id', function(req, res){
     let user = {};
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
+    user.forcePwdChange = true;
     console.log('POST: User Updated: '+user.email);
   
     let query = {_id:req.params.id}
@@ -96,14 +97,14 @@ router.post('/edit/:id', function(req, res){
     });
   });
 
-// Add Route - User Registration Form
+// GET - User Registration Form
 router.get('/register', function(req, res){
   res.render('users_register', {
     title: 'New User Registration'
   })
 });
 
-// Add Route - User Registration Submission
+// POST - User Registration (Form Submission)
 router.post('/register', function(req, res){
 
   const firstName = req.body.firstName;
