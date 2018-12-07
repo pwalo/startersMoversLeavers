@@ -18,35 +18,58 @@ router.get('/add', function(req, res){
 
 // POST Manually add New User (Form Submission)
 router.post('/add', function(req, res){
-    req.checkBody('firstName', 'First name is required').notEmpty();
-    req.checkBody('lastName', 'Last name is required').notEmpty();
-    req.checkBody('email', 'Email Address is required').notEmpty();
+    
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const username = req.body.email;
+  const password = req.body.password;
+  const password2 = req.body.password2;
+  const forcePwdChange = true;
   
-    // Get Errors
-    let errors = req.validationErrors();
-  
-    if(errors){
-      res.render('users_add', {
-        title:'Create New App User',
-        errors:errors
-        
-        }); 
-    } else {
-      let user = new User();
-      user.firstName = req.body.firstName;
-      user.lastName = req.body.lastName;
-      user.email = req.body.email;
-      console.log('POST: New User Created.  Name: '+user.firstName+' '+user.lastName);
-      console.log('POST: with email: '+user.email);
+  req.checkBody('firstName', 'First name is required').notEmpty();
+  req.checkBody('lastName', 'Last name is required').notEmpty();
+  req.checkBody('email', 'Email Address is required').notEmpty();
+  req.checkBody('email', 'Email is not valid').isEmail();
+  req.checkBody('password', 'Password is required').notEmpty();
+  req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
-      user.save(function(err){
+  // Get Errors
+  let errors = req.validationErrors();
+
+  if(errors){
+    res.render('users_add', {
+      title:'Create New App User',
+      errors:errors
+    }); 
+  } else {
+    let newUser = new User({
+    firstName:firstName,
+    lastName:lastName,
+    email:email,
+    username:username,
+    password:password,
+    forcePwdChange:forcePwdChange
+    });
+    
+    bcrypt.genSalt(10, function(err, salt){
+      bcrypt.hash(newUser.password, salt, function(err, hash){
         if(err){
           console.log(err);
-          return;
-        } else {
-          req.flash('success', 'User Created: \"'+user.email+'\"');
-          res.redirect('/users/edit');
         }
+        newUser.password = hash;
+        newUser.save(function(err){
+          if(err){
+            console.log(err);
+            return;
+          } else {
+            req.flash('success', 'User Created: \"'+newUser.email+'\"');
+            res.redirect('/users/edit');
+            console.log('POST: New User Created.  Name: '+newUser.firstName+' '+newUser.lastName);
+            console.log('POST: with email: '+newUser.email);
+          }
+        });
+      });
     });
   }
 });
@@ -81,7 +104,6 @@ router.post('/edit/:id', function(req, res){
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
-    user.forcePwdChange = true;
     console.log('POST: User Updated: '+user.email);
   
     let query = {_id:req.params.id}
