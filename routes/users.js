@@ -197,7 +197,7 @@ router.post('/login', function(req, res, next){
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
-  console.log('Logged In');
+  console.log(req.body.username+' has logged in');
 });
 
 // logout
