@@ -8,8 +8,7 @@ block content
           label User:
           select.form-control(name='user')
             each user, i in users
-              option.form-control(name='user', value=user._id) #{user.firstName} 
-                | + ' ' + #{user.LastName}
+              option.form-control(name='user', value=user._id) #{user.firstName} #{user.LastName}
         #form-group
           label Role:
           select.form-control(name='userRole')
@@ -20,11 +19,6 @@ block content
           select.form-control(name='company')
             each company, i in companys
               option.form-control(name='company', value=company._id) #{company.role}
-        #form-group
-          label Site:
-          select.form-control(name='site')
-            each site, i in sites
-              option.form-control(name='site', value=site._id) #{site.role}
         br
         input.btn.btn-primary(type='submit', value='Submit')
     else

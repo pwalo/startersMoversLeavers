@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h2 DASHBOARD
+      h3 Only For Authorised Users
+      if user
+        p #{username} 'Logged In'
+        if superAdmin
+          p #{username} 'Has the power'
+      else
+        p Contact RIT or HR if you need access to this resource
+        p uk.rit@kloeckner.com 
+        p hradmin@kloeckner.com

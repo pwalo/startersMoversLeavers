@@ -23,6 +23,9 @@ let userSchema = mongoose.Schema({
   },
   forcePwdChange:{
     type: Boolean,
+  },
+  superAdmin:{
+    type: Boolean,
   }
 });
 
