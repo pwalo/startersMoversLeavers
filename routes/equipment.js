@@ -49,7 +49,7 @@ router.post('/add', function(req, res){
       equipment.grade = req.body.grade;
       equipment.notes = req.body.notes;
       equipment.added = new Date();
-      equipment.addedBy = 'Pwalo';
+      equipment.addedBy = req.user.username;
       console.log('POST: New Equipment Created: '+equipment.make+' '+equipment.model);
   
       equipment.save(function(err){
@@ -57,7 +57,7 @@ router.post('/add', function(req, res){
           console.log(err);
           return;
         } else {
-          req.flash('success', 'Equipment Created: \"'+equipment.name+'\"');
+          req.flash('success', 'Equipment Created: \"'+equipment.make+' '+equipment.model+'\"');
           res.redirect('/');
         }
       });
@@ -67,6 +67,7 @@ router.post('/add', function(req, res){
   // Add Route - Load Edit Individual Equipment Form
 router.get('/edit/:id', function(req, res){
     Equipment.findById(req.params.id, function(err, equipment){
+      console.log(equipment);
       res.render('equipment_edit', {
         title:'Update Equipment',
         eqTypes:eqTypes,
@@ -100,7 +101,7 @@ router.post('/edit/:id', function(req, res){
     equipment.active = req.body.active;
     equipment.notes = req.body.notes;
     equipment.changed = new Date();
-    equipment.changedBy = 'Pwalo';
+    equipment.changedBy = req.user.username;
     console.log('POST: Equipment Updated: '+equipment.make+' '+equipment.model);
   
     let query = {_id:req.params.id}

@@ -93,6 +93,15 @@ app.get('*', function(req, res, next){
   next();
 });
 
+// Check user is logged in 
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.user ? true : false;
+    if (res.locals.isAuthenticated) {
+      res.locals.superAdmin = req.user.superAdmin ? true : false;
+    };
+  next();
+});
+
 // Home Route
 app.get('/', function(req, res){
     Option.find({}, function(err, options){

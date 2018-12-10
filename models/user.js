@@ -12,16 +12,22 @@ let userSchema = mongoose.Schema({
   },
   email:{
     type: String,
-    required: true
+    required: true,
+    lowercase: true,
+    unique: true
   },
   password:{
     type: String
   },
   username:{
     type: String,
-    unique: true
+    unique: true,
+    lowercase: true
   },
   forcePwdChange:{
+    type: Boolean,
+  },
+  superAdmin:{
     type: Boolean,
   }
 });
