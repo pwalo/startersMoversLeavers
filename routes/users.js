@@ -186,6 +186,17 @@ router.get('/logout', function(req, res){
 });
 
 
+router.delete('/:id', function(req, res){
+  let query = {_id:req.params.id}
+
+  User.deleteOne(query, function(err){
+    if(err){
+      console.log(err);
+    }
+    res.send('Success');
+  });
+});
+
 // Users and Roles List
 router.get('/roles', function(req, res){
   User.find({}, function(err, users){
