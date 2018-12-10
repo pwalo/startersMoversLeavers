@@ -7,7 +7,7 @@ $(document).ready(function(){
         url: '/users/'+id,
         success: function(response){
           alert('Deleting User');
-          window.location.href='/';
+          window.location.href='/users/edit';
         },
         error: function(err){
           console.log(err);

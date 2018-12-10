@@ -228,7 +228,7 @@ router.get('/logout', function(req, res){
   res.redirect('../');
 });
 
-
+//Delete User
 router.delete('/:id', function(req, res){
   let query = {_id:req.params.id}
 
@@ -237,6 +237,16 @@ router.delete('/:id', function(req, res){
       console.log(err);
     }
     res.send('Success');
+    console.log('Deleted User: '+req.params.id);
+  });
+});
+
+//Single User By ID
+router.get('/:id', function(req, res){
+  User.findById(req.params.id, function(err, user){
+    res.render('users_edit', {
+      user:user
+    });
   });
 });
 
