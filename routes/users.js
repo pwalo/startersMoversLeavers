@@ -204,6 +204,16 @@ router.post('/register', function(req, res){
   }
 });
 
+// User Dashboard
+router.route('/dashboard')
+  .get(isAuthenticated, (req, res) => {
+    console.log('req.user', req.user);
+    res.render('userDashboard', {
+      username : req.user.username
+    });
+  });
+
+
 // Login Form
 router.get('/login', function(req, res){
   res.render('users_login', {
@@ -289,14 +299,5 @@ router.get('/roles/assignment', function(req, res){
     });
   });
 });
-
-// User Dashboard
-router.route('/dashboard')
-  .get(isAuthenticated, (req, res) => {
-    console.log('req.user', req.user);
-    res.render('userDashboard', {
-      username : req.user.username
-    });
-  })
 
 module.exports = router;
