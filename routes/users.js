@@ -229,6 +229,12 @@ router.post('/login', function(req, res, next){
     failureFlash: true
   })(req, res, next);
   console.log(req.body.username+' has logged in');  
+
+  var ssn;
+    ssn = req.session;
+    ssn.user = res.locals.user;
+    console.log(ssn);
+    console.log(ssn.user);
 });
 
 // logout
