@@ -14,8 +14,8 @@ block content
           label Last Name:
           input.form-control(name='lastName', type='text', value=user.lastName)
         #form-group
-          label Super Administrator:
-          input.form-control(name='superAdmin', type='boolean', value=user.superAdmin)
+          label SA:
+          input.form-control(name='superAdmin', type='checkbox', checked=user.superAdmin, value='true')
         br
         input.btn.btn-primary(type='submit', value='Submit') 
         if superAdmin

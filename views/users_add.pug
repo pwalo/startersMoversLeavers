@@ -3,7 +3,7 @@ extends layout
 block content
     if user
       h1 #{title} 
-      form(method='POST', action='/users/add')
+      form(method='POST', action='/users/add', data-id=req.body.email)
         #form-group
           label First Name:
           input.form-control(name='firstName', type='text')          
